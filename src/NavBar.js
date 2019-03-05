@@ -1,19 +1,25 @@
 import React from "react";
 
 import leafIcon from "./leaf_2.svg";
-import { Menu, Container, Image, Icon } from "semantic-ui-react";
+import { Menu, Container, Image, Button } from "semantic-ui-react";
 
 export default class NavBar extends React.Component {
 
     render() {
         return(
-            <Menu size='tiny'>
-                <Container>
-                    <Menu.Item>
-                    <Image size='tiny' src={leafIcon}/>
-                    </Menu.Item>
-                </Container>
-            </Menu>
+            <React.Fragment>
+                <Menu>
+                    <Menu.Item  as='a' header>
+                        <Image src={leafIcon} ui={false}/>
+                </Menu.Item>
+                    <Container >
+                        <Menu.Item>
+                            <Button>user</Button>
+                        </Menu.Item>
+                    </Container>
+                </Menu>
+            </React.Fragment>
         );
     };
 };
+
