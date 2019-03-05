@@ -6,13 +6,6 @@ export default class API {
     return fetch(URL + endpoint).then(resp => resp.json());
   }
 
-  static searchPlants(searchTerms) {
-    const query = `plants/search?flowers=${searchTerms.flower}&humidity=${
-      searchTerms.humidity
-    }&light=${searchTerms.light}`;
-    return this.get(query);
-  }
-
   static getUser(id) {
     const query = `users/${id}`;
     return this.get(query);
@@ -29,3 +22,23 @@ export default class API {
     }).then(response => response.json());
   }
 }
+
+    static get(endpoint){
+        // debugger
+        return fetch(URL + endpoint)
+                .then(resp => resp.json())
+    };    
+
+    static searchPlants (searchTerms) {
+        const query = `plants/search?flowers=${searchTerms.flower}&humidity=${searchTerms.humidity}&light=${searchTerms.light}`
+        return this.get(query)
+    };
+
+    static createRoom (room) {
+        return fetch(URL+'users', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(room)
+        }).then(resp => resp.json())
+    };
+};
