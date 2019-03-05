@@ -1,7 +1,7 @@
 import React from "react";
 
 import PlantsContainer from "./PlantsContainer";
-import { Segment, Header, Icon, Image, Button } from "semantic-ui-react";
+import { Segment, Header, Icon, Image, Button, ButtonContent } from "semantic-ui-react";
 import RoomForm from "./RoomForm";
 import API from "./API";
 import PlantCard from "./PlantCard";
@@ -35,14 +35,14 @@ export default class PlantSelector extends React.Component {
             plants: [...this.state.plants, card.plant],
             selectedPlants
         })
-    };
+    };        
+
 
     render(){
         const plants = this.state.selectedPlants.map(plant => {
             return < PlantCard key={plant.latin_name} plant={plant} onClickSelect={this.onClickDeselect}/>
         });
 
-        if (this.state.selectedPlants.lenght) {this.props.handleOnChangeSelection()}
         return(
                    !this.state.selectedPlants.length
                         ? <><Segment placeholder>
@@ -55,6 +55,7 @@ export default class PlantSelector extends React.Component {
                         : <><Segment.Group placeholder horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
                             {plants}
                            </Segment.Group>
+                           {this.state.selectedPlants.length && <Button >Submit</Button>}
                            <PlantsContainer plants={this.state.plants} onClickSelect={this.onClickSelect}/>
                            </>
                 

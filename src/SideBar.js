@@ -17,6 +17,7 @@ export default class SideBar extends React.Component {
     ];
 
     handleOnChangeSelection = () => {
+        debugger
         this.setState({plantsSelected: !this.state.plantsSelected})
     };
 
