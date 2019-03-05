@@ -21,8 +21,8 @@ export default class PlantCard extends React.Component {
 
         return (
             this.state.isClicked
-                ? <PlantCardBack header={plant.commonname}  handleClick={this.handleClickImage} />
-                : <PlantCardFront image={plant.image_url} meta={plant.plant_habit} header={plant.commonname} handleClick={this.handleClickImage}/>
+                ? <PlantCardBack header={plant.commonname}   handleClick={this.handleClickImage} />
+                : <PlantCardFront image={plant.image_url} {...this.props} meta={plant.plant_habit} header={plant.commonname} onClickSelect ={this.props.onClickSelect} handleClick={this.handleClickImage}/>
         );
     }; 
 };

@@ -8,11 +8,11 @@ export default class PlantCardFront extends React.Component {
 
     render() {
         const { image, header, meta } = this.props
-        // debugger
 
         return (
             <Card
-                onClick={this.props.handleClick}
+                {...this.props}
+                onClick={this.props.onClickSelect}
                 image={image || PlantCardFront.defaultProps.image}
                 header={header || PlantCardFront.defaultProps.header}
                 meta={meta || PlantCardFront.defaultProps.meta}
