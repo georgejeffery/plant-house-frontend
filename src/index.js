@@ -5,15 +5,10 @@ import App from "./App";
 import Login from "./Login";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
-
-const history = createBrowserHistory({
-  //forceRefresh: true
-});
 
 ReactDOM.render(
-  <Router history={history}>
-    <App history={history} />
+  <Router>
+    <App />
   </Router>,
   document.getElementById("root")
 );
