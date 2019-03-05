@@ -20,6 +20,11 @@ export default class RoomForm extends React.Component {
     onToggle = () => {
         this.setState({flower: !this.state.flower});
     };
+
+    validateState = () => {
+
+    };
+
     render(){
         const optionsLight = [
             {key: 1, text: 'low', value: 'low'},
@@ -36,7 +41,7 @@ export default class RoomForm extends React.Component {
 
         return(
             <Modal 
-                trigger={<Button ><Image src={leafIcon} /></Button>} 
+                trigger={<Button ><Image src={leafIcon} size='mini'/></Button>} 
                 size='mini'
                 open={this.state.open}
                 onOpen={() => this.setState({open:true})}

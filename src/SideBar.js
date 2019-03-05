@@ -1,22 +1,29 @@
 import React from "react";
-import { Tab, TabPane } from "semantic-ui-react";
+import { Tab, TabPane, Button } from "semantic-ui-react";
 import PlantSelector from "./PlantsSelector";
 import RoomsContainer from "./RoomsContainer";
 
 export default class SideBar extends React.Component {
 
     state = {
-        userId: null
+        userId: null,
+        plantsSelected: false,
     };
 
-    static panes = [
+    panes = [
         {menuItem: 'Rooms', render: () => <TabPane><RoomsContainer/></TabPane>},
-        {menuItem: 'New Room', render: () => <TabPane><PlantSelector/></TabPane>},
-    ]
+        {menuItem: `${this.state.plantsSelected ? <Button>test</Button> : 'New Room'}`, render: () => <TabPane><PlantSelector handleOnChangeSelection={this.handleOnChangeSelection}/></TabPane>
+        },
+    ];
+
+    handleOnChangeSelection = () => {
+        debugger
+        this.setState({plantsSelected: !this.state.plantsSelected})
+    };
 
     render(){
         return(
-            <Tab menu={{fluid: true, vertical: true, tabular: true}} panes={SideBar.panes} />
+            <Tab grid={{tabWidth: 2, paneWidth: 14}} menu={{fluid: true, vertical: true, tabular: true}} panes={this.panes} />
         );
     };
 }; 
