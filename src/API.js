@@ -21,7 +21,7 @@ export default class API {
       body: JSON.stringify(userFields)
     }).then(response => response.json());
   }
-}
+
 
     static get(endpoint){
         // debugger
