@@ -32,6 +32,13 @@ class App extends Component {
     //this.addUsertoState(user.id);
   };
 
+  login = user => {
+    API.authorise(user)
+      .then(resp => API.getUser(resp))
+      .then(user => this.setState({ user }));
+    this.props.history.push("/main");
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -41,8 +48,16 @@ class App extends Component {
           history={this.props.history}
         />
         <React.Fragment>
-          <Route exact path="/" component={() => <SideBar user={this.state.user}/>} />
-          <Route exact path="/login" component={Login} />
+          <Route
+            exact
+            path="/main"
+            component={() => <SideBar user={this.state.user} />}
+          />
+          <Route
+            exact
+            path="/"
+            component={() => <Login login={this.login} />}
+          />
           <Route
             exact
             path="/register"
