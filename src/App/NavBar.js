@@ -10,7 +10,7 @@ export default class NavBar extends React.Component {
     if (this.props.user) {
       this.props.logout();
     } else {
-      this.history.push("/login");
+      this.history.push("/");
     }
   };
 
@@ -24,9 +24,7 @@ export default class NavBar extends React.Component {
           <Container>
             <Menu.Item>
               <Button onClick={this.handleClick}>
-                {this.props.user
-                  ? this.props.user.name
-                  : "Login / Sign up"}
+                {this.props.user ? this.props.user.name : "Login / Sign up"}
               </Button>
             </Menu.Item>
           </Container>
