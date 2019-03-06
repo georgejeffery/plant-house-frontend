@@ -1,15 +1,16 @@
-URL = "http://localhost:3000/api/v1/";
+URL = "http://10.218.5.22:3000/api/v1/";
 
 export default class API {
-  static get(endpoint) {
-    // debugger
-    return fetch(URL + endpoint).then(resp => resp.json());
-  }
 
+  static get(endpoint){
+    return fetch(URL + endpoint)
+            .then(resp => resp.json())
+};  
+  
   static getUser(id) {
     const query = `users/${id}`;
     return this.get(query);
-  }
+  };
 
   static createUser(userFields) {
     const query = `users`;
@@ -22,15 +23,8 @@ export default class API {
     }).then(response => response.json());
   }
 
-
-    static get(endpoint){
-        // debugger
-        return fetch(URL + endpoint)
-                .then(resp => resp.json())
-    };    
-
     static searchPlants (searchTerms) {
-        const query = `plants/search?flowers=${searchTerms.flower}&humidity=${searchTerms.humidity}&light=${searchTerms.light}`
+        const query = `plants/search?flowers=${searchTerms.flowers}&humidity=${searchTerms.humidity}&light=${searchTerms.light}`
         return this.get(query)
     };
 
@@ -41,4 +35,5 @@ export default class API {
             body: JSON.stringify(room)
         }).then(resp => resp.json())
     };
+
 };

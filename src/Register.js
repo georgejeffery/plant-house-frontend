@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar";
+import NavBar from "./App/NavBar";
 import { Link } from "react-router-dom";
 import { Form, Button, Grid } from "semantic-ui-react";
 

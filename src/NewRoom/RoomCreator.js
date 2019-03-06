@@ -1,22 +1,23 @@
 import React from "react";
 
-import PlantsContainer from "./PlantsContainer";
+import PlantsContainer from "../ShowPlants/PlantsContainer";
 import { Segment, Header, Icon, Image, Button, ButtonContent } from "semantic-ui-react";
 import RoomForm from "./RoomForm";
-import API from "./API";
-import PlantCard from "./PlantCard";
+import API from "../API";
+import PlantCard from "../ShowPlants/PlantCard";
 
-export default class PlantSelector extends React.Component {
+export default class RoomCreator extends React.Component {
 
     state = {
         plants: [],
         selectedPlants: [],
+        roomParams: null,
     };
 
     handleClickSearch = (search) => {
         API.searchPlants(search)
             .then(plants => {
-                this.setState({ plants })
+                this.setState({ plants, roomParams: search })
             })
     };
 
@@ -37,6 +38,12 @@ export default class PlantSelector extends React.Component {
         })
     };        
 
+    
+
+    handleSubmitRoom = () => {
+        const room = this.getParamsRoom() 
+    
+    };
 
     render(){
         const plants = this.state.selectedPlants.map(plant => {
@@ -49,13 +56,13 @@ export default class PlantSelector extends React.Component {
                             <Header icon>
                                 Tell me more about your room!
                             </Header>
-                            <RoomForm handleClickSearch={this.handleClickSearch}/>
+                            <RoomForm handleClickSearch={this.handleClickSearch} roomParams={this.roomParams}/>
                            </Segment>
                            <PlantsContainer plants={this.state.plants} onClickSelect={this.onClickSelect}/></>
                         : <><Segment.Group placeholder horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
                             {plants}
                            </Segment.Group>
-                           {this.state.selectedPlants.length && <Button >Submit</Button>}
+                           {this.state.selectedPlants.length && <Button onClick={this.handleSubmitRoom}>Submit</Button>}
                            <PlantsContainer plants={this.state.plants} onClickSelect={this.onClickSelect}/>
                            </>
                 
