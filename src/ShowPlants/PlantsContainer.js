@@ -11,7 +11,7 @@ export default class PlantsContainer extends React.Component {
         
         return (
             this.props.plants.length
-            ? <Segment.Group placeholder horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
+            ? <Segment.Group horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
                 {plants}
              </Segment.Group>
             : <Segment placeholder></Segment>

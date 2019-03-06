@@ -41,7 +41,8 @@ export default class RoomCreator extends React.Component {
     
 
     handleSubmitRoom = () => {
-        API.createRoom({...this.state.roomParams, plants: this.state.selectedPlantsb, user_id: this.props.user.id})
+        API.createRoom({...this.state.roomParams, plants: this.state.selectedPlants, user_id: this.props.user.id})
+            .then(resp => console.log(resp))
     };
 
     render(){
@@ -55,10 +56,10 @@ export default class RoomCreator extends React.Component {
                             <Header icon>
                                 Tell me more about your room!
                             </Header>
-                            <RoomForm handleClickSearch={this.handleClickSearch} roomParams={this.roomParams}/>
+                            <RoomForm handleClickSearch={this.handleClickSearch} />
                            </Segment>
                            <PlantsContainer plants={this.state.plants} onClickSelect={this.onClickSelect}/></>
-                        : <><Segment.Group placeholder horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
+                        : <><Segment.Group horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
                             {plants}
                            </Segment.Group>
                            {this.state.selectedPlants.length && <Button onClick={this.handleSubmitRoom}>Submit</Button>}
