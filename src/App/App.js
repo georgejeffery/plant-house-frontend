@@ -10,32 +10,7 @@ import Register from "../Register";
 
 class App extends Component {
   state = {
-    user: {
-      "id": 1,
-      "created_at": "2019-03-06T09:53:57.906Z",
-      "updated_at": "2019-03-06T09:53:57.906Z",
-      "name": "George",
-      "username": "George",
-      "password_digest": null,
-      "email": "george@george.com",
-      "encrypted_password": "$2a$11$2naw9sC4qtHe1TH9jhIAbeyN/pWX.LwwdTJu0AEGfH14WXT28xktm",
-      "reset_password_token": null,
-      "reset_password_sent_at": null,
-      "remember_created_at": null,
-      "rooms": [
-        {
-          "id": 1,
-          "created_at": "2019-03-01T09:48:34.264Z",
-          "updated_at": "2019-03-01T09:48:34.264Z",
-          "name": "New Room",
-          "user_id": 1,
-          "light": null,
-          "temperature": null,
-          "humidity": null,
-          "flowers": null
-        }
-      ]
-    },
+    user: "",
     failedRegister: false
   };
 
