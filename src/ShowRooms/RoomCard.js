@@ -9,6 +9,7 @@ export default class RoomCard extends React.Component {
         const room = this.props.room
         return (
             <Card
+                // onClick={}
                 image={roomImg}
                 header={room.name}
             >

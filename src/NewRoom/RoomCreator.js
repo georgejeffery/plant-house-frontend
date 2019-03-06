@@ -41,8 +41,7 @@ export default class RoomCreator extends React.Component {
     
 
     handleSubmitRoom = () => {
-        const room = this.getParamsRoom() 
-    
+        API.createRoom(this.state.roomParams)
     };
 
     render(){
