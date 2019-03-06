@@ -1,29 +1,33 @@
 import React from "react";
 
-import { Button, Image, Modal, Dropdown, Container, Checkbox, Grid } from "semantic-ui-react";
-import leafIcon from "./leaf_2.svg";
+import { Button, Image, Modal, Dropdown, Checkbox, Grid, Message, Input, GridColumn } from "semantic-ui-react";
+import leafIcon from "../ShowPlants/leaf_2.svg";
 
 export default class RoomForm extends React.Component {
 
     state = {
-        flower:false,
+        flowers:false,
         light: null,
         humidity: null,
+        name:null,
         open: false,
-    }
+    };
 
-    onChangeTerms = (event, value) => {
+    onChangeTerms = (e, value) => {
         // debugger
         this.setState({[value.name]: value.value})
     };
 
-    onToggle = () => {
-        this.setState({flower: !this.state.flower});
-    };
 
     validateState = () => {
-
+        if (this.state.light && this.state.humidity) {
+            return <Button primary onClick={() => {this.props.handleClickSearch(this.state); this.setState({open: false})}}>Submit</Button>
+        } else {
+            return <Message>Need to pick from all dropdowns</Message>
+        }
     };
+
+   
 
     render(){
         const optionsLight = [
@@ -50,6 +54,9 @@ export default class RoomForm extends React.Component {
                 <Modal.Content>
                     <Grid>
                         <Grid.Row>
+                            <Input placeholder='Name me...' name='name' onChange={this.onChangeTerms}></Input>
+                        </Grid.Row>
+                        <Grid.Row>
                         <Modal.Header>How bright your room is?</Modal.Header>
                         <Dropdown 
                             onChange={this.onChangeTerms}
@@ -61,6 +68,7 @@ export default class RoomForm extends React.Component {
                         </Grid.Row>
                         <Grid.Row>
                         <Modal.Header>How humid your room is?</Modal.Header>
+                        <Modal.Content>
                         <Dropdown 
                             onChange={this.onChangeTerms}
                             options={optionsHumidity}
@@ -68,14 +76,14 @@ export default class RoomForm extends React.Component {
                             placeholder='choose one'
                             value={value}
                         />
+                        </Modal.Content>
                         </Grid.Row>
                         <Grid.Row>
                         <Checkbox label ='Would you fancy some flowers with your plants?' onChange={this.onToggle} checked={this.state.flower}></Checkbox>
                         </Grid.Row>
                     </Grid>
                 </Modal.Content>
-                <Modal.Actions>
-                        <Button primary onClick={() => {this.props.handleClickSearch(this.state); this.setState({open: false})}}>Submit</Button>
+                <Modal.Actions content={this.validateState()}>
                 </Modal.Actions>
             </Modal>
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import leafIcon from "./leaf_2.svg";
+import leafIcon from "../ShowPlants/leaf_2.svg";
 import { Menu, Container, Image, Button } from "semantic-ui-react";
 import { History } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export default class NavBar extends React.Component {
           <Container>
             <Menu.Item>
               <Button onClick={this.handleClick}>
-                {this.props.user.name
+                {this.props.user
                   ? this.props.user.name
                   : "Login / Sign up"}
               </Button>
