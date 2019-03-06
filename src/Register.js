@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./App/NavBar";
 import { Link } from "react-router-dom";
-import { Form, Button, Grid } from "semantic-ui-react";
+import { Form, Button, Grid, Message } from "semantic-ui-react";
 
 export default class Register extends React.Component {
   state = {
@@ -19,6 +19,13 @@ export default class Register extends React.Component {
       <React.Fragment>
         <Grid textAlign="center">
           <Grid.Column style={{ maxWidth: 450 }}>
+            {this.props.registerState ? (
+              <Message>
+                <p>Please Fill In The Form!</p>
+              </Message>
+            ) : (
+              ""
+            )}
             <Form
               className="login-form"
               onSubmit={() => this.props.submit(this.state)}
