@@ -19,7 +19,8 @@ export default class Login extends React.Component {
           <Grid.Column style={{ maxWidth: 450 }}>
             {this.props.loginState ? (
               <Message>
-                <p>Please Try Again!</p>
+                <p>Please Try Again! Or do you need to</p>
+                <Link to="/register">Register?</Link>
               </Message>
             ) : (
               ""
