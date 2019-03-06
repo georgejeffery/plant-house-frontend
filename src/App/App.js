@@ -11,10 +11,7 @@ import Register from "../Register";
 class App extends Component {
   state = {
     user: "",
-<<<<<<< HEAD:src/App/App.js
-=======
     failedRegister: false
->>>>>>> george:src/App.js
   };
 
   addUsertoState = userId => {
@@ -26,17 +23,12 @@ class App extends Component {
   };
 
   submit = user => {
-<<<<<<< HEAD:src/App/App.js
-    API.createUser(user).then(user => this.setState({ user }));
-    this.props.history.push("/");
-=======
     if (user.name) {
       API.createUser(user).then(resp => this.setState({ user: resp }));
       this.props.history.push("/");
     } else {
       this.setState({ failedRegister: true });
     }
->>>>>>> george:src/App.js
     //this.addUsertoState(user.id);
   };
 
