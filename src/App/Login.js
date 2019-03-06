@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
-import { Form, Button, Grid } from "semantic-ui-react";
+import { Form, Button, Grid, Message } from "semantic-ui-react";
 import API from "../API";
 
 export default class Login extends React.Component {
@@ -17,6 +17,14 @@ export default class Login extends React.Component {
       <React.Fragment>
         <Grid textAlign="center">
           <Grid.Column style={{ maxWidth: 450 }}>
+            {this.props.loginState ? (
+              <Message>
+                <p>Please Try Again! Or do you need to</p>
+                <Link to="/register">Register?</Link>
+              </Message>
+            ) : (
+              ""
+            )}
             <Form
               className="login-form"
               onSubmit={() => this.props.login(this.state)}

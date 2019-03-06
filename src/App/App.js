@@ -11,7 +11,8 @@ import Register from "../Register";
 class App extends Component {
   state = {
     user: "",
-    failedRegister: false
+    failedRegister: false,
+    failedLogin: false
   };
 
   addUsertoState = userId => {
@@ -35,8 +36,15 @@ class App extends Component {
   login = user => {
     API.authorise(user)
       .then(resp => API.getUser(resp))
-      .then(user => this.setState({ user }));
-    this.props.history.push("/main");
+      .then(user => {
+        if (user.name) {
+          this.setState({ user }, () => {
+            this.props.history.push("/main");
+          });
+        } else {
+          this.setState({ failedLogin: true });
+        }
+      });
   };
 
   render() {
@@ -56,7 +64,9 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={() => <Login login={this.login} />}
+            component={() => (
+              <Login login={this.login} loginState={this.state.failedLogin} />
+            )}
           />
           <Route
             exact
