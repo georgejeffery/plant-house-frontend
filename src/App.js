@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import { Grid, Menu, Button } from "semantic-ui-react";
+import { Grid, Menu, Button, Message } from "semantic-ui-react";
 import NavBar from "./NavBar";
 import PlantSelector from "./PlantsSelector";
 import SideBar from "./SideBar";
@@ -11,7 +11,8 @@ import Register from "./Register";
 
 class App extends Component {
   state = {
-    user: ""
+    user: "",
+    failedRegister: false
   };
 
   addUsertoState = userId => {
@@ -27,8 +28,12 @@ class App extends Component {
   }
 
   submit = user => {
-    API.createUser(user).then(resp => this.setState({ user: resp }));
-    this.props.history.push("/");
+    if (user.name) {
+      API.createUser(user).then(resp => this.setState({ user: resp }));
+      this.props.history.push("/");
+    } else {
+      this.setState({ failedRegister: true });
+    }
     //this.addUsertoState(user.id);
   };
 
@@ -46,7 +51,12 @@ class App extends Component {
           <Route
             exact
             path="/register"
-            component={() => <Register submit={this.submit} />}
+            component={() => (
+              <Register
+                submit={this.submit}
+                registerState={this.state.failedRegister}
+              />
+            )}
           />
         </React.Fragment>
       </React.Fragment>
