@@ -41,7 +41,7 @@ export default class RoomCreator extends React.Component {
     
 
     handleSubmitRoom = () => {
-        API.createRoom(this.state.roomParams)
+        API.createRoom({...this.state.roomParams, plants: this.state.selectedPlantsb, user_id: this.props.user.id})
     };
 
     render(){
