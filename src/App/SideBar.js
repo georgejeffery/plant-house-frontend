@@ -18,7 +18,7 @@ export default class SideBar extends React.Component {
       menuItem: "New Room",
       render: () => (
         <TabPane>
-          <RoomCreator />
+          <RoomCreator user={this.props.user}/>
         </TabPane>
       )
     }

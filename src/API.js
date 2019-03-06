@@ -32,9 +32,10 @@ export default class API {
   }
 
   static createRoom(room) {
-    return fetch(URL + "users", {
+    return fetch(URL + "rooms", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" 
+                },
       body: JSON.stringify(room)
     }).then(resp => resp.json());
   }
