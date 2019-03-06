@@ -1,5 +1,3 @@
-import jwt_decode from "jwt-decode";
-
 URL = "http://10.218.5.22:3000/api/v1/";
 
 export default class API {
