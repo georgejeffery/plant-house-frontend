@@ -27,7 +27,9 @@ export default class RoomForm extends React.Component {
         }
     };
 
-   
+    onToggle = () => {
+        this.setState({flowers: !this.state.flowers})
+    };
 
     render(){
         const optionsLight = [
@@ -54,7 +56,7 @@ export default class RoomForm extends React.Component {
                 <Modal.Content>
                     <Grid>
                         <Grid.Row>
-                            <Input placeholder='Name me...' name='name' onChange={this.onChangeTerms}></Input>
+                            <Input placeholder='Name me...' name='name' value={value} onChange={this.onChangeTerms}></Input>
                         </Grid.Row>
                         <Grid.Row>
                         <Modal.Header>How bright your room is?</Modal.Header>

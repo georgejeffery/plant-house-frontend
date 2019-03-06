@@ -9,11 +9,14 @@ export default class RoomCard extends React.Component {
         const room = this.props.room
         return (
             <Card
-                // onClick={}
+                onClick={() => this.props.handleRoomSelect(room)}
                 image={roomImg}
                 header={room.name}
-            >
-            </Card>
+                style={{minWidth: 300,
+                        margin: 10,
+                        }}
+            />
+            
         );
     };
 };
