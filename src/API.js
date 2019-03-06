@@ -22,7 +22,7 @@ export default class API {
       },
       body: JSON.stringify(userFields)
     }).then(response => response.json());
-  }
+  };
 
   static searchPlants(searchTerms) {
     const query = `plants/search?flowers=${searchTerms.flowers}&humidity=${
@@ -51,4 +51,4 @@ export default class API {
         return token.user_id;
       });
   }
-}
+};
