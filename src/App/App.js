@@ -19,6 +19,12 @@ class App extends Component {
     API.getUser(userId).then(user => this.setState({ user: user }));
   };
 
+  updateRoomState = room => {
+      const userRooms = [...this.state.user.rooms, room]
+
+      this.setState({user: { ...this.state.user, rooms: userRooms }});
+  };
+
   logoutUser = () => {
     this.setState({ user: "" });
   };
@@ -59,7 +65,7 @@ class App extends Component {
           <Route
             exact
             path="/main"
-            component={() => <SideBar user={this.state.user} />}
+            component={() => <SideBar updateRoomState={this.updateRoomState} user={this.state.user} />}
           />
           <Route
             exact

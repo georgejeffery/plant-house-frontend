@@ -9,7 +9,7 @@ export default class RoomForm extends React.Component {
         flowers:false,
         light: null,
         humidity: null,
-        name:null,
+        name:"",
         open: false,
     };
 
@@ -31,6 +31,12 @@ export default class RoomForm extends React.Component {
         this.setState({flowers: !this.state.flowers})
     };
 
+    componentDidMount(){
+        const { name, light, humidity } = this.props.roomParams;
+        
+        this.setState({ light, name, humidity });
+    };
+
     render(){
         const optionsLight = [
             {key: 1, text: 'low', value: 'low'},
@@ -43,7 +49,7 @@ export default class RoomForm extends React.Component {
             {key: 2, text: 'high', value: 'high'}
         ];
 
-        const { value } = this.state
+        const { name, humidity, light } = this.state
 
         return(
             <Modal 
@@ -56,7 +62,7 @@ export default class RoomForm extends React.Component {
                 <Modal.Content>
                     <Grid>
                         <Grid.Row>
-                            <Input placeholder='Name me...' name='name' value={value} onChange={this.onChangeTerms}></Input>
+                            <Input placeholder='Name me...' name='name' value={name} onChange={this.onChangeTerms}></Input>
                         </Grid.Row>
                         <Grid.Row>
                         <Modal.Header>How bright your room is?</Modal.Header>
@@ -65,7 +71,7 @@ export default class RoomForm extends React.Component {
                             options={optionsLight}
                             placeholder='choose one'
                             name='light'
-                            value={value}
+                            value={light}
                         />
                         </Grid.Row>
                         <Grid.Row>
@@ -76,7 +82,7 @@ export default class RoomForm extends React.Component {
                             options={optionsHumidity}
                             name='humidity'
                             placeholder='choose one'
-                            value={value}
+                            value={humidity}
                         />
                         </Modal.Content>
                         </Grid.Row>

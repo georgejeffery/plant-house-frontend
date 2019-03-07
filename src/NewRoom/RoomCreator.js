@@ -11,7 +11,7 @@ export default class RoomCreator extends React.Component {
     state = {
         plants: [],
         selectedPlants: [],
-        roomParams: null,
+        roomParams: {},
     };
 
     handleClickSearch = (search) => {
@@ -42,7 +42,7 @@ export default class RoomCreator extends React.Component {
 
     handleSubmitRoom = () => {
         API.createRoom({...this.state.roomParams, plants: this.state.selectedPlants, user_id: this.props.user.id})
-            .then(resp => console.log(resp))
+            .then(resp => this.props.updateRoomState(resp))
     };
 
     render(){
@@ -56,7 +56,7 @@ export default class RoomCreator extends React.Component {
                             <Header icon>
                                 Tell me more about your room!
                             </Header>
-                            <RoomForm handleClickSearch={this.handleClickSearch} />
+                            <RoomForm roomParams={this.state.roomParams} handleClickSearch={this.handleClickSearch} />
                            </Segment>
                            <PlantsContainer plants={this.state.plants} onClickSelect={this.onClickSelect}/></>
                         : <><Segment.Group horizontal style={{overflow:'auto', whiteSpace:'nowrap', maxHeight:400}}>
