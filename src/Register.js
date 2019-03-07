@@ -6,14 +6,13 @@ import { Form, Button, Grid, Message } from "semantic-ui-react";
 export default class Register extends React.Component {
   state = {
     name: "",
-    email: "",
     username: "",
     password: ""
   };
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   render() {
-    const { name, email, username, password } = this.state;
+    const { name, username, password } = this.state;
 
     return (
       <React.Fragment>
@@ -35,13 +34,6 @@ export default class Register extends React.Component {
                 type="text"
                 name="name"
                 value={name}
-                onChange={this.handleChange}
-              />
-              <Form.Input
-                label="Enter Email"
-                type="text"
-                name="email"
-                value={email}
                 onChange={this.handleChange}
               />
               <Form.Input

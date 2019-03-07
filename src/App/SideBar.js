@@ -8,11 +8,11 @@ export default class SideBar extends React.Component {
   panes = [
     {
       menuItem: "Rooms",
-      render: () => (
+      render: () => {return (
         <TabPane>
-          <RoomsContainer rooms={this.props.user.rooms} />
+          <RoomsContainer user={this.props.user} />
         </TabPane>
-      )
+      )}
     },
     {
       menuItem: "New Room",

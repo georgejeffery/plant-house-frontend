@@ -1,4 +1,4 @@
-URL = "http://10.218.5.22:3000/api/v1/";
+URL = "http://10.218.1.193:3000/api/v1/";
 
 export default class API {
   static get(endpoint) {
@@ -29,7 +29,7 @@ export default class API {
       searchTerms.humidity
     }&light=${searchTerms.light}`;
     return this.get(query);
-  }
+  };
 
   static createRoom(room) {
     return fetch(URL + "rooms", {
@@ -38,7 +38,12 @@ export default class API {
                 },
       body: JSON.stringify(room)
     }).then(resp => resp.json());
-  }
+  };
+
+  static getRoom(roomId){
+    return fetch(URL + `rooms/${roomId}`)
+              .then(resp => resp.json())
+  };
 
   static authorise(user) {
     return fetch(URL + "authenticate", {
