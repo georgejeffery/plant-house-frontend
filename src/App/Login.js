@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
-import { Form, Button, Grid, Message } from "semantic-ui-react";
+import { Form, Button, Grid, Message, GridRow } from "semantic-ui-react";
 import API from "../API";
 
 export default class Login extends React.Component {
@@ -15,7 +15,9 @@ export default class Login extends React.Component {
     const { username, password } = this.state;
     return (
       <React.Fragment>
-        <Grid textAlign="center">
+        <Grid textAlign="center" >
+        <GridRow style={{height: '33vh'}}></GridRow>
+        <Grid.Row verticalAlign='middle' >
           <Grid.Column style={{ maxWidth: 450 }}>
             {this.props.loginState ? (
               <Message>
@@ -47,6 +49,7 @@ export default class Login extends React.Component {
             </Form>
             <Link to="/register">Not registered yet? Do that here!</Link>
           </Grid.Column>
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     );
