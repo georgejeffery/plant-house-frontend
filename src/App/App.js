@@ -25,8 +25,11 @@ class App extends Component {
 
   submit = user => {
     if (user.name) {
-      API.createUser(user).then(resp => this.setState({ user: resp }));
-      this.props.history.push("/main");
+      API.createUser(user).then(resp =>
+        this.setState({ user: resp }, () => {
+          this.props.history.push("/main");
+        })
+      );
     } else {
       this.setState({ failedRegister: true });
     }
