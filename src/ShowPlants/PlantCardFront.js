@@ -3,28 +3,29 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import leafIcon from "./leaf_2.svg";
 
-
 export default class PlantCardFront extends React.Component {
+  render() {
+    const { image, header, meta } = this.props;
 
-    render() {
-        const { image, header, meta } = this.props
+    return (
+      <Card style={{ margin: 10 }}>
+        <Image
+          src={image || PlantCardFront.defaultProps.image}
+          style={{ height: 250, "object-fit": "cover" }}
+        />
+        <Card.Content style={{ width: 250 }}>
+          <Card.Header style={{ "white-space": "initial" }}>
+            {header || PlantCardFront.defaultProps.header}
+          </Card.Header>
+          <Card.Meta>{meta || PlantCardFront.defaultProps.meta}</Card.Meta>
+        </Card.Content>
+      </Card>
+    );
+  }
 
-        return (
-            <Card
-                {...this.props}
-                onClick={this.props.onClickSelect}
-                image={image || PlantCardFront.defaultProps.image}
-                header={header || PlantCardFront.defaultProps.header}
-                meta={meta || PlantCardFront.defaultProps.meta}
-            />
-         
-        );
-    }; 
-
-    static defaultProps = {
-            image: leafIcon,
-            header: "I Don't know my name",
-            meta: "I don't have a type"
-    };
-};
-
+  static defaultProps = {
+    image: leafIcon,
+    header: "I Don't know my name",
+    meta: "I don't have a type"
+  };
+}
