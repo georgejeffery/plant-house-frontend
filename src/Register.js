@@ -17,6 +17,8 @@ export default class Register extends React.Component {
     return (
       <React.Fragment>
         <Grid textAlign="center">
+        <Grid.Row style={{height: '33vh'}}></Grid.Row>
+        <Grid.Row>
           <Grid.Column style={{ maxWidth: 450 }}>
             {this.props.registerState ? (
               <Message>
@@ -53,6 +55,7 @@ export default class Register extends React.Component {
               <Button type="submit">Register</Button>
             </Form>
           </Grid.Column>
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     );

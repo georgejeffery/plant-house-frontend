@@ -11,7 +11,7 @@ export default class RoomsContainer extends React.Component {
         const roomRender = () => {
             if (this.props.roomClicked) {
                 // debugger
-                return <PlantsContainer plants={this.props.plants}/>
+                return <PlantsContainer containerSize={{minHeight:'80vh'}} plants={this.props.plants}/>
             }
             else {
                 return (this.props.rooms.length

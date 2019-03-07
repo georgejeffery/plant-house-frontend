@@ -21,15 +21,16 @@ export default class NavBar extends React.Component {
     }
   };
 
+  mainLink=()=>this.history.push("/main")
+
   render() {
     return (
       <React.Fragment>
         <Menu>
-          <Menu.Item as="a" header>
+          <Menu.Item as="a" header onClick={this.mainLink}>
             <Image src={leafIcon} ui={false} />
           </Menu.Item>
-          <Container>
-            <Menu.Item>
+            <Menu.Item position='right'>
               {this.props.user ? (
                 <Button animated onClick={this.handleClick}>
                   <Button.Content visible>
@@ -43,7 +44,6 @@ export default class NavBar extends React.Component {
                 </Button>
               )}
             </Menu.Item>
-          </Container>
         </Menu>
       </React.Fragment>
     );

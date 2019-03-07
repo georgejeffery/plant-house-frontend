@@ -29,7 +29,6 @@ export default class PlantCard extends React.Component {
         meta={plant.plant_habit}
         header={plant.commonname ? plant.commonname : plant.latin_name}
         onClickSelect={this.props.onClickSelect}
-        handleClick={this.handleClickImage}
         style={{ width: 250 }}
       />
     );

@@ -8,7 +8,7 @@ export default class PlantCardFront extends React.Component {
     const { image, header, meta } = this.props;
 
     return (
-      <Card style={{ margin: 10 }}>
+      <Card { ...this.props } style={{ margin: 10 }} onClick={this.props.onClickSelect}>
         <Image
           src={image || PlantCardFront.defaultProps.image}
           style={{ height: 250, "object-fit": "cover" }}
